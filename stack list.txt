@@ -1,0 +1,11 @@
+dbdiagramm
+        https://dbdiagram.io/d
+
+
+prisma
+        https://www.prisma.io
+
+
+Supabase
+        
+
