@@ -6,14 +6,80 @@ https://dbdiagram.io/d
 
 https://dbdiagram.io/d/Trello-clone-68373534c07db17e7790eeac
 
+
+
+..................................................................... PostgreSQL
+
+запуск pgAdmin
+https://youtu.be/eaaon35rzIo
+
+PostgreSQL
+user postgres
+PASSWORD up0709
+PORT 5432
+
+
+
+https://youtu.be/eaaon35rzIo
+
+
+
+
 ------------------------------------------------------------------ 2 створюємо проект
 yarn create next-app trello
 
 ------------------------------------------------------------------ 3  інсталюємо prisma
+
+            #"postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"
+            # postgresql://postgres:[YOUR-PASSWORD]@db.wiqnzhnucibbxkyntxmd.supabase.co:5432/postgres
+            # DB_PASSWORD="X4c2hJEhUe2zPH8M"
+
+            DATABASE_URL="postgresql://postgres:07092006@db.wiqnzhnucibbxkyntxmd.supabase.co:5432/postgres?schema=public"
+
+            ------------------
+            DATABASE_URL="postgresql://postgres:X4c2hJEhUe2zPH8M@db.wiqnzhnucibbxkyntxmd.supabase.co:5432/postgres?sslmode=require"
+            ------------------
+
+
+
 yarn add prisma - D
 
 ------------------------------------------------------------------- 4 ініціюємо prisma
 yarn prisma  init
 
+------------------------------------------------------------------ 5 Описуємо моделі в schema.prisma
+
+------------------------------------------------------------------ 6 застосовуємо міграції
+ping db.trello-clone.supabase.co
+ping db.wiqnzhnucibbxkyntxmd.supabase.co
+
+
+
+yarn prisma migrate dev
+
+init
+
+yarn add @prisma/client
+
+yarn prisma generate
+
+yarn add zod
+
+
+
+
+
+scripts :
+-------------
+
+Старт додатку next
+yarn dev
+
+
+
+-------------
 ============================
-00 : 32 : 41
+00 : 48 : 09
+
+
+

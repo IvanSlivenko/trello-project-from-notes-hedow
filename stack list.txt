@@ -8,4 +8,16 @@ prisma
 
 Supabase
         
+PostgreSQL
+
+pgAdmin
+
+incomniya
+
+zod
+
+
+
+
+
 

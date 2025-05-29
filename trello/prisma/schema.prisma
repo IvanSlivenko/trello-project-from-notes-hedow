@@ -12,25 +12,40 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  //  url     = "postgresql://postgres:X4c2hJEhUe2zPH8M@db.wiqnzhnucibbxkyntxmd.supabase.co:5432/postgres?sslmode=require"
+
 }
 
-model Boards {
+model Board {
   id        String    @id @default(uuid())
   title     String
-  createdAt DateTime  @default(now())     // ← виправлено "cretedAt"
-  updatedAt DateTime  @updatedAt          // ← виправлено "updateAt"
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 
-  columns   Columns[]                     // ← зв’язок з Columns
+  columns   Column[] // зв'язок: один board → багато columns
 }
 
-model Columns {
+model Column {
   id        String   @id @default(uuid())
   title     String
   boardId   String
-  board     Boards   @relation(fields: [boardId], references: [id], onDelete: Cascade)
-  order Int
-  width Int
+  board     Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  order     Int
+  width     Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  cards     Card[]   // зв'язок: один column → багато cards
+}
+
+model Card {
+  id          String   @id @default(uuid())
+  title       String
+  columnId    String
+  column      Column   @relation(fields: [columnId], references: [id], onDelete: Cascade)
+  description String?
+  order       Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
