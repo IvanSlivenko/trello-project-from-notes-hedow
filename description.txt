@@ -72,6 +72,10 @@ yarn add zod
 scripts :
 -------------
 
+Старт prisma client
+yarn prisma generate
+
+
 Старт додатку next
 yarn dev
 
@@ -79,7 +83,7 @@ yarn dev
 
 -------------
 ============================
-00 : 48 : 09
+00 : 55 : 18
 
 
 
