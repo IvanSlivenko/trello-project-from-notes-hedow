@@ -67,6 +67,8 @@ yarn add zod
 
 
 
+yarn add flowbite
+
 
 
 scripts :
@@ -76,10 +78,11 @@ scripts :
 yarn prisma generate
 
 
+Старт next.js убраузері 
+http://localhost:3000/
+
 Старт додатку next
 yarn dev
-
-
 
 -------------
 ============================

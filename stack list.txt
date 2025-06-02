@@ -16,7 +16,14 @@ incomniya
 
 zod
 
+flowbite
 
+
+
+-----------------
+"dev": "next dev --turbopack",
+
+"dev": "next dev --turbo=false",
 
 
 
