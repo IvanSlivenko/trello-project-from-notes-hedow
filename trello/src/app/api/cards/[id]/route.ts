@@ -9,7 +9,7 @@ interface CardRouteContext {
   };
 }
 
-export async function PUT(req: Request, { params }: CardRouteContext) {
+export async function PATCH(req: Request, { params }: CardRouteContext) {
   try {
     const { id } = params;
     const bodyRaw = await req.json();

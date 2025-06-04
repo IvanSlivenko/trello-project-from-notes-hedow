@@ -1,11 +1,11 @@
 // import Image from "next/image";
 import Link from "next/link";
-import { UserDropdown } from "./user-dropdown.component";
+import { UserDropdown } from ".";
 import { ExampleMenu } from "./Exemple-menu.components";
 
 export function Navbar() {
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900">
+    <nav className="bg-white border-gray-200 dark:bg-gray-800 mb-10">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           href="/"

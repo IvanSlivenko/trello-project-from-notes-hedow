@@ -1,13 +1,34 @@
-'use client';
+"use client";
+import clsx from "clsx";
 import Image from "next/image";
+import { useState } from "react";
+import { twMerge } from "tailwind-merge";
+import { useClickAway } from "@uidotdev/usehooks";
 
 export function UserDropdown() {
-  const openDropdown = () => {
-    document.getElementById("user-dropdown")!.classList.toggle("hidden");
+  const [isDropdownOpened, setIsDropdownOpened] = useState(false);
+
+  const dropDownClasses = clsx({
+    hidden: !isDropdownOpened,
+    "absolute top-8 right-0": true,
+  });
+
+  const toggleDropdown = () => {
+    setIsDropdownOpened(true);
   };
 
+  const dropDownRef = useClickAway<HTMLDivElement>((e) => {
+  if ((e.target as HTMLElement).closest(".user-name-button")) {
+    return;
+  }
+  setIsDropdownOpened(false);
+});
+
   return (
-    <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+    <div
+      className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
+      style={{ position: "relative" }}
+    >
       <button
         type="button"
         className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -15,7 +36,7 @@ export function UserDropdown() {
         aria-expanded="false"
         data-dropdown-toggle="user-dropdown"
         data-dropdown-placement="bottom"
-        onClick={()=>openDropdown()}
+        onClick={toggleDropdown}
       >
         <span className="sr-only">Open user menu</span>
 
@@ -31,8 +52,14 @@ export function UserDropdown() {
 
       {/* Dropdown menu */}
       <div
-        className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600"
+        // className= {` z-50  my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600  ${dropDownClasses}`}
+        className={twMerge(
+          "z-50  my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600",
+          dropDownClasses
+        )}
+        style={{ position: "absolute", top: "35px" }}
         id="user-dropdown"
+        ref={dropDownRef}
       >
         <div className="px-4 py-3">
           <span className="block text-sm text-gray-900 dark:text-white">
@@ -78,7 +105,7 @@ export function UserDropdown() {
         </ul>
       </div>
 
-      <button
+      {/* <button
         data-collapse-toggle="navbar-user"
         type="button"
         className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -101,7 +128,7 @@ export function UserDropdown() {
             d="M1 1h15M1 7h15M1 13h15"
           />
         </svg>
-      </button>
+      </button> */}
     </div>
   );
 }

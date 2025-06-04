@@ -69,6 +69,15 @@ yarn add zod
 
 yarn add flowbite
 
+yarn add clsx
+
+yarn add @uidotdev/usehooks
+
+
+yarn add tailwind-merge
+
+
+yarn add @tanstack/react-query@4
 
 
 scripts :
@@ -86,7 +95,7 @@ yarn dev
 
 -------------
 ============================
-02 : 34 : 48
+03 : 23 : 24
 
 
 
