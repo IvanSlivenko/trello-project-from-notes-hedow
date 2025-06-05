@@ -24,6 +24,9 @@ tailwindcss
 react-query  ( v4 )
                      https://tanstack.com/query/v4/docs/framework/react/installation
 
+axios
+                     
+
 
 
 -----------------
