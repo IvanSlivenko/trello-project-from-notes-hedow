@@ -1,5 +1,4 @@
 import { BoardsList } from "./components";
-import { BoardCard } from "./components/board-card.components";
 import { prisma } from "@/core/prisma"
 
 export default async function Home() {
@@ -8,7 +7,7 @@ export default async function Home() {
 
   return (
     <div className="container mx-auto">
-      {/* <BoardsList/> */}
+      <BoardsList initialData={boards}/>
     </div>
   );
 }

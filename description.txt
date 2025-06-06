@@ -81,6 +81,8 @@ yarn add @tanstack/react-query@4
 
 yarn add axios
 
+yarn add react-hook-form @hookform/resolvers
+
 
 scripts :
 -------------
@@ -97,7 +99,7 @@ yarn dev
 
 -------------
 ============================
-03 : 33 : 33
+04 : 03 : 10
 
 
 
