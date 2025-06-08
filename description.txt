@@ -84,6 +84,19 @@ yarn add axios
 yarn add react-hook-form @hookform/resolvers
 
 
+-------------
+============================
+04 : 03 : 10
+
+
+
+
+
+
+
+------------------------------------------------------- Lesson 2
+https://youtu.be/wepDsz4Fj7I
+
 scripts :
 -------------
 
@@ -97,9 +110,13 @@ http://localhost:3000/
 Старт додатку next
 yarn dev
 
+yarn dev -H 0.0.0.0 
+
 -------------
 ============================
-04 : 03 : 10
+00 : 35 : 51
+
+
 
 
 

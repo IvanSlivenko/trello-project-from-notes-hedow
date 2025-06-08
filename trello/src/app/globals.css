@@ -11,3 +11,20 @@
 /* @import 'flowbite'; */
 
 /* @custom-variant dark (&:where(.dark, .dark *)); */
+
+
+
+
+
+html,
+body {
+  height: 100%;
+}
+
+body > div {
+  height: 80%;
+  /* background-color: brown;  */
+}
+
+
+
