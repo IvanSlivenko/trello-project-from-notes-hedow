@@ -1,7 +1,7 @@
 // import Image from "next/image";
 import Link from "next/link";
 import { UserDropdown } from ".";
-import { ExampleMenu } from "./Exemple-menu.components";
+import { ExampleMenu } from "./Exemple-menu.component";
 
 export function Navbar() {
   return (

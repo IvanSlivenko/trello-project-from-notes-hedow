@@ -6,6 +6,8 @@ export const createColumnDto = z.object({
   width: z.number().min(50).default(50),
 });
 
+export type CreateColumnDto = z.infer<typeof createColumnDto>;
+
 export const updateColumnDto = createColumnDto
   .omit({
     boardId: true,
@@ -16,5 +18,5 @@ export const updateColumnsOrderDto = z.array(
   z.object({
     id: z.string().uuid(),
     order: z.number(),
-})
+  })
 );

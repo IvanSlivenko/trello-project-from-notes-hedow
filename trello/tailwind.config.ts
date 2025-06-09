@@ -10,14 +10,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      height: {
-        content: "calc(100% - 11rem)",
-      },
+      // height: {
+      //   content: "calc(100% - 11rem)",
+      // },
       spacing: {
         26: "6.5rem",
       },
     },
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [require("flowbite/plugin"),require("tailwind-scrollbar")],
+  safelist: ["h-content", "scrollbar-custom"],
 };
 export default config;
