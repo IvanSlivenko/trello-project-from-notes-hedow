@@ -1,9 +1,11 @@
-import { CreateColumnDto } from "@/app/api/columns/dto";
+import { CreateColumnDto as CreateColumnDtoOriginal } from "@/app/api/columns/dto";
 import { api } from "@/core/api";
 import { Column } from "@prisma/client";
-
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useBoardsQueryKey } from "./use-boards";
+
+
+type CreateColumnDto = Omit<CreateColumnDtoOriginal, 'width'>;
 
 const createColumnFn = async (column: CreateColumnDto) => {
   
@@ -14,15 +16,20 @@ const createColumnFn = async (column: CreateColumnDto) => {
   // return response.data;
 };
 
-export const useCreateColumnMutation = () => {
+interface UseCreateColumnMutationOptions {
+  boardId: string;
+}
+
+export const useCreateColumnMutation = ({ boardId }: UseCreateColumnMutationOptions) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
     // mutationKey: ["create-board"],
     mutationFn: createColumnFn,
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: useBoardsQueryKey });
-    },
+    onSuccess: ()=>{
+      const data = queryClient.getQueryData(['board', boardId]);
+      console.log('data', data);
+    }
   });
 
   return mutation;

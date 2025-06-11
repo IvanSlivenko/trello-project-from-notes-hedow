@@ -3,7 +3,7 @@ import { Input } from "./input.component";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { useCreateBoard } from "@/hooks/use-create-board";
+import { useCreateColumnMutation } from "@/hooks/use-create-column";
 
 const createColumnSchema = z.object({
   title: z.string().min(1).max(20),
@@ -11,7 +11,11 @@ const createColumnSchema = z.object({
 
 type CreateColumnValues = z.infer<typeof createColumnSchema>;
 
-export function CreateColumn() {
+interface CreateColumnProps {
+  boardId: string;
+}
+
+export function CreateColumn({ boardId }: CreateColumnProps) {
   const [isFormOpened, setIsFormOpened] = useState(false);
 
   const {
@@ -22,31 +26,34 @@ export function CreateColumn() {
     resolver: zodResolver(createColumnSchema),
   });
 
-  const { mutateAsync } = useCreateBoard();
+  const { mutateAsync } = useCreateColumnMutation({ boardId });
 
-  const onSubmit = handleSubmit( async (values) => {
-    await mutateAsync(values);
+  const onSubmit = handleSubmit(async (values) => {
+    await mutateAsync({
+      ...values,
+      boardId
+    });
     setIsFormOpened(false);
-    
   });
 
   const openForm = () => setIsFormOpened(true);
 
   return (
-    <div className="block w-full p-6 bg-white border border-gray-200 rounded-lg cursor-pointer shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-    onClick={openForm}
+    <div
+      className="block h-fit min-w-[12.5rem] w-[12.5rem] p-4  border  rounded-lg cursor-pointer shadow-sm  bg-gray-800 border-gray-700 hover:bg-gray-700"
+      onClick={openForm}
     >
       {isFormOpened ? (
         <form onSubmit={onSubmit}>
-          <Input 
-          {...register("title")} 
-          placeholder="Вкажіть назву нової Column" 
-          error={errors.title?.message} 
-          disabled={isSubmitting}
+          <Input
+            {...register("title")}
+            placeholder="Вкажіть назву нової Column"
+            error={errors.title?.message}
+            disabled={isSubmitting}
           />
         </form>
       ) : (
-        <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h5 className="text-lg font-bold tracking-tight text-gray-900 dark:text-white">
           + Create a new column
         </h5>
       )}
