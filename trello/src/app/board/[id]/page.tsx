@@ -1,6 +1,7 @@
-import { notFound } from "next/navigation";
 import { prisma } from "@/core/prisma";
 import { ColumnsList } from "@/app/components/columns-list.component";
+import { notFound } from "next/navigation";
+
 
 export const dynamic = "force-dynamic";
 
@@ -8,9 +9,17 @@ interface PageProps {
   params: { id: string };
 }
 
+
+
 export default async function BoardPage({ params }: PageProps) {
+  const { id } = await params; // <-- чекати params
+  // console.log('id',id)
+
+  if (!id || typeof id !== "string") return notFound();
+  
   const board = await prisma.board.findUnique({
-    where: { id: params.id },
+    // where: { id: params.id },
+     where: { id },
     include: {
       columns: {
         orderBy: {

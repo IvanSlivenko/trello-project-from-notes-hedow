@@ -22,6 +22,7 @@ export const useBoardQuery = ({ initialData}: UseBoardsQueryOptions) => {
     queryKey: ["board", initialData.id],
     queryFn: () => getBoardFn(initialData.id),
     initialData,
+    // staleTime: Infinity,
   });
 
   return query;

@@ -97,6 +97,10 @@ yarn add react-hook-form @hookform/resolvers
 ------------------------------------------------------- Lesson 2
 https://youtu.be/wepDsz4Fj7I
 
+column.component.tsx 
+resize -> onDrag={onResize}
+
+
 scripts :
 -------------
 
@@ -114,7 +118,8 @@ yarn dev -H 0.0.0.0
 
 -------------
 ============================
-01 : 35 : 15
+02 : 18 : 08
+
 
 
 
