@@ -3,7 +3,7 @@ import { api } from "@/core/api";
 import { Board } from "@prisma/client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useBoardsQueryKey } from "./use-boards";
+import { useBoardsQueryKey } from "./use-boards-query";
 
 const createBoardFn = async (board: createBoardDto) => {
   
@@ -14,7 +14,7 @@ const createBoardFn = async (board: createBoardDto) => {
   // return response.data;
 };
 
-export const useCreateBoard = () => {
+export const useCreateBoardMutation = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({

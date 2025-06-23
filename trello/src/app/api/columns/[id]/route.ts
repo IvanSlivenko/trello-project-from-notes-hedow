@@ -8,6 +8,36 @@ interface ColumnRouteContext {
   };
 }
 
+export async function GET(req: Request, { params }: ColumnRouteContext) {
+  try {
+    const { id } = params;
+
+    const column = await prisma.column.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        cards: true,
+      },
+    });
+
+    if (!column) {
+      return NextResponse.json([
+        {
+          code: "not_found",
+          messages: "Column not found"
+        },
+      ]);
+    }
+  } catch (error) {
+    console.error("Error updated columns:", error);
+    return NextResponse.json(
+      { error: "Failed Column not found" },
+      { status: 500 }
+    );
+  }
+}
+
 export async function PATCH(req: Request, { params }: ColumnRouteContext) {
   try {
     const { id } = params;
@@ -20,7 +50,6 @@ export async function PATCH(req: Request, { params }: ColumnRouteContext) {
       });
     }
 
-    
     const findColumn = await prisma.column.update({
       where: {
         id,

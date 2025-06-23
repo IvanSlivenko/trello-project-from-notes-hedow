@@ -7,13 +7,13 @@ const getBoardsFn = async () => {
   return response.data;
 };
 
-interface UseBoardsOptions {
+interface UseBoardsQueryOptions {
   initialData: Board[];
 }
 
 export const useBoardsQueryKey = ["board"];
 
-export const useBoards = ({ initialData }: UseBoardsOptions) => {
+export const useBoards = ({ initialData }: UseBoardsQueryOptions) => {
   const query = useQuery({
     queryKey: useBoardsQueryKey,
     queryFn: getBoardsFn,
